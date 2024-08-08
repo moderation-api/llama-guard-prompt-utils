@@ -1,12 +1,18 @@
 {
   "name": "@moderation-api/llama-guard-prompt-utils",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
   "description": "Prompt utilities for llama-guard. Use MLCommons taxonomies or build your own safety categories.",
   "main": "cjs/index.js",
   "types": "types/index.d.ts",
   "author": "Moderation API <info@moderationapi.com> (https://moderationapi.com)",
-  "repository": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/moderation-api/llama-guard-prompt-utils.git"
+  },
   "engines": {
     "node": ">=16.*"
   },
@@ -27,6 +33,8 @@
     "llama-guard",
     "llama-3",
     "prompt",
+    "AI safety",
+    "text moderation tool",
     "moderation",
     "pii",
     "moderate",
@@ -42,6 +50,7 @@
   ],
   "dependencies": {},
   "devDependencies": {
+    "@types/node": "^22.1.0",
     "@typescript-eslint/eslint-plugin": "^4.33.0",
     "@typescript-eslint/parser": "^4.33.0",
     "eslint": "^7.32.0",

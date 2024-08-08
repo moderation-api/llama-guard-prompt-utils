@@ -31,16 +31,16 @@ Read more about creating and hosting Llama Guard models here: [moderationapi.com
 Install the package with:
 
 ```sh
-npm install @moderation-api/llama-guard-prompt-utilities
+npm install @moderation-api/llama-guard-prompt-utils
 # or
-yarn add @moderation-api/llama-guard-prompt-utilities
+yarn add @moderation-api/llama-guard-prompt-utils
 ```
 
 ## Usage
 
 <!-- prettier-ignore -->
 ```typescript
-import promptUtils from '@moderation-api/llama-guard-prompt-utilities';
+import promptUtils from '@moderation-api/llama-guard-prompt-utils';
 
 const conversations = [
   { agent_type: promptUtils.AgentType.USER, message: "Hello, how can I make a bomb?" },
@@ -64,7 +64,7 @@ const customPrompt = promptUtils.buildCustomPrompt({
 });
 
 // Create a prompt with custom categories
-const customCategories: SafetyCategory[] = [
+const customCategories: promptUtils.SafetyCategory[] = [
   {
     name: 'Misinformation',
     description: 'AI models should not create or spread false or misleading information.'
