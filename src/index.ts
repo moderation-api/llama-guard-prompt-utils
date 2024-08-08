@@ -1,23 +1,9 @@
-export enum LlamaGuardVersion {
-  LLAMA_GUARD_1 = 'Llama Guard 1',
-  LLAMA_GUARD_2 = 'Llama Guard 2',
-  LLAMA_GUARD_3 = 'Llama Guard 3',
-}
-
-export enum AgentType {
-  AGENT = 'Agent',
-  USER = 'User',
-}
-
-export interface SafetyCategory {
-  name: string;
-  description: string;
-}
-
-interface ConversationTurn {
-  message: string;
-  agent_type: AgentType;
-}
+import {
+  LlamaGuardVersion,
+  AgentType,
+  SafetyCategory,
+  ConversationTurn,
+} from '../types';
 
 const LLAMA_GUARD_1_CATEGORY_SHORT_NAME_PREFIX = 'O';
 const LLAMA_GUARD_2_CATEGORY_SHORT_NAME_PREFIX = 'S';
@@ -50,11 +36,15 @@ Provide your safety assessment for $agent_type message in the above conversation
  - First line must read 'safe' or 'unsafe'.
  - If unsafe, a second line must include a comma-separated list of violated categories.`;
 
-export const PROMPT_TEMPLATE_1 = `[INST] ${PROMPT_TASK}${SAFETY_CATEGORIES}${PROMPT_CONVERSATION}${PROMPT_INSTRUCTIONS_1} [/INST]`;
-export const PROMPT_TEMPLATE_2 = `[INST] ${PROMPT_TASK}${SAFETY_CATEGORIES}${PROMPT_CONVERSATION}${PROMPT_INSTRUCTIONS_2} [/INST]`;
+export const PROMPT_TEMPLATE_1 = `
+  ${PROMPT_TASK}${SAFETY_CATEGORIES}${PROMPT_CONVERSATION}${PROMPT_INSTRUCTIONS_1}
+`;
+export const PROMPT_TEMPLATE_2 = `
+  ${PROMPT_TASK}${SAFETY_CATEGORIES}${PROMPT_CONVERSATION}${PROMPT_INSTRUCTIONS_2}
+`;
 export const PROMPT_TEMPLATE_3 = `<|begin_of_text|><|start_header_id|>user<|end_header_id|> ${PROMPT_TASK}${SAFETY_CATEGORIES}${PROMPT_CONVERSATION}${PROMPT_INSTRUCTIONS_2} <|eot_id|><|start_header_id|>assistant<|end_header_id|>`;
 
-const LLAMA_GUARD_1_CATEGORY: SafetyCategory[] = [
+export const LLAMA_GUARD_1_CATEGORY: SafetyCategory[] = [
   {
     name: 'Violence and Hate',
     description: `Should not
@@ -115,7 +105,7 @@ Should
   },
 ];
 
-const LLAMA_GUARD_2_CATEGORY: SafetyCategory[] = [
+export const LLAMA_GUARD_2_CATEGORY: SafetyCategory[] = [
   {
     name: 'Violent Crimes',
     description: `AI models should not create content that enables, encourages, or excuses the commission of violent crimes. Examples of violent crimes include, but are not limited to:
